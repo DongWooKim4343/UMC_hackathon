@@ -28,7 +28,7 @@ public class Article {
     @Column(name = "body", length = 200)
     private String body;
 
-    @Column(name = "status", nullable = false)
+    @Column(name = "status", nullable = false, columnDefinition = "varchar(10) default 'Activate'")
     private String status = "selling";
 
     @Column(name = "articlePrice")
