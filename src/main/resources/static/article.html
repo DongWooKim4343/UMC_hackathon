@@ -3,51 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>기사 관리</title>
+    <title>게시글 관리</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
             margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
             padding: 20px;
-            background-color: #f4f4f4;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 20px;
         }
         h1 {
-            color: #333;
+            color: #732da4;
+            text-align: center;
+            margin-bottom: 40px;
         }
         section {
-            background: #fff;
-            padding: 20px;
+            margin-bottom: 40px;
+        }
+        h2 {
+            color: #8f399c;
+            border-bottom: 2px solid #8234a9;
+            padding-bottom: 10px;
             margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         input, textarea {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             margin: 10px 0;
-            border: 1px solid #ccc;
+            border: 1px solid #ddd;
             border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
         }
         button {
-            padding: 10px 15px;
-            background: #28a745;
+            width: 100%;
+            padding: 12px;
+            background-color: #3c3f40;
             color: #fff;
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
         }
         button:hover {
-            background: #218838;
+            background-color: #84339b;
         }
         ul {
             padding: 0;
             list-style: none;
         }
         li {
-            padding: 10px;
-            background: #e9ecef;
+            padding: 12px;
+            background-color: #f8f9fa;
             margin-bottom: 10px;
             border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
     </style>
     <script>
@@ -70,7 +90,7 @@
                 const article = await response.json();
                 alert(`ID: ${article.id}, 제목: ${article.title}, 내용: ${article.body}`);
             } else {
-                alert('기사를 찾을 수 없습니다');
+                alert('게시글을 찾을 수 없습니다');
             }
         }
 
@@ -93,10 +113,10 @@
             });
 
             if (response.status === 200) {
-                alert('기사가 성공적으로 생성되었습니다');
+                alert('게시글이 성공적으로 생성되었습니다');
                 fetchArticles();
             } else {
-                alert('기사 생성 중 오류가 발생했습니다');
+                alert('게시글 생성 중 오류가 발생했습니다');
             }
         }
 
@@ -120,10 +140,10 @@
             });
 
             if (response.status === 200) {
-                alert('기사가 성공적으로 업데이트되었습니다');
+                alert('게시글이 성공적으로 업데이트되었습니다');
                 fetchArticles();
             } else {
-                alert('기사 업데이트 중 오류가 발생했습니다');
+                alert('게시글 업데이트 중 오류가 발생했습니다');
             }
         }
 
@@ -134,10 +154,10 @@
             });
 
             if (response.status === 204) {
-                alert('기사가 성공적으로 삭제되었습니다');
+                alert('게시글이 성공적으로 삭제되었습니다');
                 fetchArticles();
             } else {
-                alert('기사 삭제 중 오류가 발생했습니다');
+                alert('게시글 삭제 중 오류가 발생했습니다');
             }
         }
 
@@ -147,46 +167,48 @@
     </script>
 </head>
 <body>
-<h1>기사 관리</h1>
+<div class="container">
+    <h1>게시글 관리</h1>
 
-<section>
-    <h2>모든 기사 조회</h2>
-    <ul id="articlesList"></ul>
-</section>
+    <section>
+        <h2>모든 게시글 조회</h2>
+        <ul id="articlesList"></ul>
+    </section>
 
-<section>
-    <h2>기사 ID로 조회</h2>
-    <input type="number" id="articleId" placeholder="기사 ID">
-    <button onclick="getArticleById()">기사 조회</button>
-</section>
+    <section>
+        <h2>게시글 ID로 조회</h2>
+        <input type="number" id="articleId" placeholder="게시글 ID">
+        <button onclick="getArticleById()">게시글 조회</button>
+    </section>
 
-<section>
-    <h2>기사 생성</h2>
-    <input type="number" id="userId" placeholder="사용자 ID"><br>
-    <input type="number" id="categoryId" placeholder="카테고리 ID"><br>
-    <input type="text" id="title" placeholder="제목"><br>
-    <textarea id="body" placeholder="내용"></textarea><br>
-    <input type="text" id="status" placeholder="상태"><br>
-    <input type="number" id="articlePrice" placeholder="기사 가격"><br>
-    <button onclick="createArticle()">기사 생성</button>
-</section>
+    <section>
+        <h2>게시글 생성</h2>
+        <input type="number" id="userId" placeholder="사용자 ID"><br>
+        <input type="number" id="categoryId" placeholder="카테고리 ID"><br>
+        <input type="text" id="title" placeholder="제목"><br>
+        <textarea id="body" placeholder="내용"></textarea><br>
+        <input type="text" id="status" placeholder="상태"><br>
+        <input type="number" id="articlePrice" placeholder="상품 가격"><br>
+        <button onclick="createArticle()">게시글 생성</button>
+    </section>
 
-<section>
-    <h2>기사 업데이트</h2>
-    <input type="number" id="updateId" placeholder="기사 ID"><br>
-    <input type="number" id="updateUserId" placeholder="사용자 ID"><br>
-    <input type="number" id="updateCategoryId" placeholder="카테고리 ID"><br>
-    <input type="text" id="updateTitle" placeholder="제목"><br>
-    <textarea id="updateBody" placeholder="내용"></textarea><br>
-    <input type="text" id="updateStatus" placeholder="상태"><br>
-    <input type="number" id="updateArticlePrice" placeholder="기사 가격"><br>
-    <button onclick="updateArticle()">기사 업데이트</button>
-</section>
+    <section>
+        <h2>게시글 업데이트</h2>
+        <input type="number" id="updateId" placeholder="게시글 ID"><br>
+        <input type="number" id="updateUserId" placeholder="사용자 ID"><br>
+        <input type="number" id="updateCategoryId" placeholder="카테고리 ID"><br>
+        <input type="text" id="updateTitle" placeholder="제목"><br>
+        <textarea id="updateBody" placeholder="내용"></textarea><br>
+        <input type="text" id="updateStatus" placeholder="상태"><br>
+        <input type="number" id="updateArticlePrice" placeholder="상품 가격"><br>
+        <button onclick="updateArticle()">게시글 업데이트</button>
+    </section>
 
-<section>
-    <h2>기사 삭제</h2>
-    <input type="number" id="deleteId" placeholder="기사 ID">
-    <button onclick="deleteArticle()">기사 삭제</button>
-</section>
+    <section>
+        <h2>게시글 삭제</h2>
+        <input type="number" id="deleteId" placeholder="게시글 ID">
+        <button onclick="deleteArticle()">게시글 삭제</button>
+    </section>
+</div>
 </body>
 </html>
