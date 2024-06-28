@@ -20,17 +20,26 @@
             border-radius: 8px;
             margin-top: 20px;
         }
-        h1 {
-            color: #732da4;
-            text-align: center;
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin-bottom: 40px;
+        }
+        .header img {
+            max-width: 50px;
+            margin-right: 20px;
+        }
+        h1 {
+            color: #662594;
+            margin: 0;
         }
         section {
             margin-bottom: 40px;
         }
         h2 {
-            color: #8f399c;
-            border-bottom: 2px solid #8234a9;
+            color: #84339b;
+            border-bottom: 2px solid #8f399c;
             padding-bottom: 10px;
             margin-bottom: 20px;
         }
@@ -46,7 +55,7 @@
         button {
             width: 100%;
             padding: 12px;
-            background-color: #3c3f40;
+            background-color: #732da4;
             color: #fff;
             border: none;
             border-radius: 4px;
@@ -56,7 +65,7 @@
             transition: background-color 0.3s ease;
         }
         button:hover {
-            background-color: #84339b;
+            background-color: #8f399c;
         }
         ul {
             padding: 0;
@@ -168,7 +177,10 @@
 </head>
 <body>
 <div class="container">
-    <h1>게시글 관리</h1>
+    <div class="header">
+        <img src="images/image.png" alt="Logo">
+        <h1>게시글 관리</h1>
+    </div>
 
     <section>
         <h2>모든 게시글 조회</h2>
@@ -188,7 +200,7 @@
         <input type="text" id="title" placeholder="제목"><br>
         <textarea id="body" placeholder="내용"></textarea><br>
         <input type="text" id="status" placeholder="상태"><br>
-        <input type="number" id="articlePrice" placeholder="상품 가격"><br>
+        <input type="number" id="articlePrice" placeholder="구매 가격"><br>
         <button onclick="createArticle()">게시글 생성</button>
     </section>
 
@@ -200,7 +212,7 @@
         <input type="text" id="updateTitle" placeholder="제목"><br>
         <textarea id="updateBody" placeholder="내용"></textarea><br>
         <input type="text" id="updateStatus" placeholder="상태"><br>
-        <input type="number" id="updateArticlePrice" placeholder="상품 가격"><br>
+        <input type="number" id="updateArticlePrice" placeholder="구매 가격"><br>
         <button onclick="updateArticle()">게시글 업데이트</button>
     </section>
 
